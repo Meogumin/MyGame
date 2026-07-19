@@ -6,12 +6,14 @@ import java.io.ObjectOutputStream;
 import java.net.Socket;
 
 import common.Message;
+import common.PlayerInfo;
 
 public class ClientHandler extends Thread {
 	private Socket socket;
 	private int playerId;
 	private GameRoom room;
-
+	private PlayerInfo playerInfo;
+	
 	private ObjectInputStream in;
 	private ObjectOutputStream out;
 
@@ -40,13 +42,20 @@ public class ClientHandler extends Thread {
 
 	public void send(Message message) {
 		try {
+			out.reset();
 			out.writeObject(message);
 			out.flush();
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
 	}
+	public void setPlayerInfo(PlayerInfo playerInfo) {
+		this.playerInfo = playerInfo;
+	}
 
+	public PlayerInfo getPlayerInfo() {
+		return playerInfo;
+	}
 	public int getIdPlayer() {
 		return playerId;
 	}

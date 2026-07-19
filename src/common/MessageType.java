@@ -1,13 +1,15 @@
 package common;
 
-import java.io.Serializable;
-
-public enum MessageType implements Serializable {
-    CONNECT,
-    CHAT,
-    MOVE,
-    RESULT,
-    TURN,
+public enum MessageType {
+    JOIN_ROOM,
+    PLAYER_JOINED,
+    COLOR_SELECT,
     START,
-    PLAYER_JOINED
+    CHAT,
+
+    ROLL,
+    MOVE,
+    DEPLOY,
+    END_TURN,
+    SKIP
 }
